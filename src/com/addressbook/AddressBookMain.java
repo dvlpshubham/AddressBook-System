@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class AddressBookMain {
     static Scanner scanner = new Scanner(System.in);
     
-    ArrayList<Contacts> personDetail = personDetail = new ArrayList<Contacts>();
+    ArrayList<Contacts> personDetail = new ArrayList<Contacts>();
 
     // add new person record to array list after taking input
 

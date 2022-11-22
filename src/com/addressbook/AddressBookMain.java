@@ -49,6 +49,23 @@ class AddressBookMain {
             }
         }
     }
+    public static void deletePerson() {
+
+        System.out.println("Enter the name to search and delete");
+        String s = sc.next();
+        for (int i = 0; i < list.size(); i++) {
+            Contacts p = list.get(i);
+            if (s.equals(p.getFirstName())) {
+                list.remove(i);
+            }
+        }
+        System.out.println("contact after deletion");
+        if (list.isEmpty() != true)
+            System.out.println(list);
+        else {
+            System.out.println("contacts deleted");
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -61,6 +78,8 @@ class AddressBookMain {
         addContact();
         //Editing Contact
         editContact();
+        // Deleting Contact
+        deletePerson();
 
         System.out.println(list); //printing list
     }

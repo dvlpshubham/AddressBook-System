@@ -1,52 +1,67 @@
 package com.addressbook;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
-public class AddressBookMain {
-    static Scanner scanner = new Scanner(System.in);
-    ArrayList<Contacts> personDetail;
+class AddressBookMain {
+    static Scanner sc = new Scanner(System.in);
+    static List<Contacts> list = new LinkedList<Contacts>();
 
-    public AddressBookMain() {
-        personDetail = new ArrayList<Contacts>();
+    //Created method for adding contact
+    public static void addContact()
+    {
+        System.out.println("Enter your firstName : ");
+        String firstName = sc.nextLine();
+        System.out.println("Enter your lastName : ");
+        String lastName = sc.nextLine();
+        System.out.println("Enter your address : ");
+        String address = sc.nextLine();
+        System.out.println("Enter your city : ");
+        String city = sc.nextLine();
+        System.out.println("Enter your state : ");
+        String state = sc.nextLine();
+        System.out.println("Enter your pin : ");
+        String pin = sc.nextLine();
+        System.out.println("Enter your MobileNo : ");
+        String MobileNo = sc.nextLine();
+        System.out.println("Enter your email : ");
+        String email = sc.nextLine();
+        Contacts obj = new Contacts(firstName, lastName,address, city, state, pin, MobileNo, email);
+        list.add(obj);
     }
 
-    // add new person record to array list after taking input
 
-    public void addPerson() {
-        System.out.println("Enter the First Name");
-        String firstName = scanner.next();
-        System.out.println("Enter the Last Name");
-        String lastName = scanner.next();
-        System.out.println("Enter the Address");
-        String address = scanner.next();
-        System.out.println("Enter the City");
-        String city = scanner.next();
-        System.out.println("Enter the State");
-        String state = scanner.next();
-        System.out.println("Enter the Zip Code");
-        String zip = scanner.next();
-        System.out.println("Enter the PhoneNumber");
-        String phoneNumber = scanner.next();
-        System.out.println("Enter the Email");
-        String emailId = scanner.next();
-        // constructor creation
-        Contacts contacts = new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, emailId);
-
-        // adding the above list to to Contacts array list
-        personDetail.add(contacts);
-
-        // printing contacts data inside
-        System.out.println(contacts);
-
+    public static void editContact()
+    {
+        //Scanner sc = new Scanner(System.in);
+        System.out.println("Enter first name for confirmation : ");
+        String firstName = sc.nextLine();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getFirstName().equalsIgnoreCase(firstName))
+            {
+                list.remove(i);
+                addContact();
+                System.out.println("Successfully Edit data");
+            }
+            else {
+                System.out.println("No data found in Address Book");
+            }
+        }
     }
+
 
     public static void main(String[] args) {
-        System.out.println("Welcome to Address Book Program in AddressBookMain class");
-        AddressBookMain ab = new AddressBookMain();
-        ab.addPerson();
+
+        AddressBookMain addressBook = new AddressBookMain();
+        //Displaying the welcome message
+        System.out.println("WELCOME TO ADDRESS BOOK PROBLEM");
+        //Adding new contact
+        System.out.println("Enter details of new contact");
+        addContact();
+        //Editing Contact
+        editContact();
+
+        System.out.println(list); //printing list
     }
-
 }
-
-
